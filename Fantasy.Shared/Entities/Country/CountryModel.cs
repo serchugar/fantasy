@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fantasy.Shared.Entities;
+namespace Fantasy.Shared.Entities.Country;
 
 [Table("countries", Schema = "fantasy")]
 [Index(nameof(Name), IsUnique = true)]
