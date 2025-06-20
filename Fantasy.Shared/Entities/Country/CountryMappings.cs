@@ -1,5 +1,5 @@
 using Riok.Mapperly.Abstractions;
-using Serchugar.Base.Backend;
+using Serchugar.Base.Shared;
 
 namespace Fantasy.Shared.Entities.Country;
 

@@ -1,7 +1,8 @@
 using Fantasy.Backend.Data;
 using Fantasy.Shared.Entities.Country;
 using Microsoft.EntityFrameworkCore;
-using Serchugar.Base.Backend; // My own nuget package :)
+using Serchugar.Base.Backend;
+using Serchugar.Base.Shared; // My own nuget package :)
 
 namespace Fantasy.Backend.Services.Countries;
 
