@@ -1,0 +1,29 @@
+@page "/countries"
+
+<h3>Países</h3>
+
+@if (Countries is null)
+{
+    
+    <p>Cargando...</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead class="border-bottom border-black">
+        <tr>
+            <th>País</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var country in Countries)
+        {
+            <tr>
+                <td>@country.Name</td>
+                <td><a class="btn btn-warning btn-sm">Editar</a></td>
+                <td><button class="btn btn-danger btn-sm">Borrar</button></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
