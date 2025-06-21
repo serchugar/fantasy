@@ -1,3 +1,4 @@
+@inherits ComponentBaseWithLocalizer
 @typeparam T
 
 @if (MyList is null)
@@ -5,7 +6,7 @@
     @if (Loading is null)
     {
         <div class="d-flex justify-content-center">
-            <p>Cargando...</p>
+            <p>@Localizer["Loading"]</p>
         </div>
     }
     else
@@ -17,7 +18,7 @@ else if (!MyList.Any())
 {
     @if (NoRecords is null)
     {
-        <p>No hay registros para mostrar</p>
+        <p>@Localizer["NoRecords"]</p>
     }
     else
     {

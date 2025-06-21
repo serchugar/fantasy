@@ -1,11 +1,10 @@
 using Fantasy.Frontend.Repositories.Countries;
 using Fantasy.Shared.Entities.Country;
-using Microsoft.AspNetCore.Components;
 using Serchugar.Base.Shared;
 
 namespace Fantasy.Frontend.Pages.Countries;
 
-public partial class CountriesIndex(CountriesRepository repo) : ComponentBase
+public partial class CountriesIndex(CountriesRepository repo)
 {
     private IEnumerable<CountryDTO>? Countries { get; set; }
 

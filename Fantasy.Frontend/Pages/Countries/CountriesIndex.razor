@@ -1,9 +1,10 @@
+@inherits ComponentBaseWithLocalizer
 @page "/countries"
 
-<h3>Países</h3>
+<h3>@Localizer["Countries"]</h3>
 
 <div class="mb-3">
-    <a class="btn btn-primary" href="/countries/create">Nuevo País</a>
+    <a class="btn btn-primary" href="/countries/create">@Localizer["New"] @Localizer["Country"]</a>
 </div>
 
 <GenericList MyList="Countries">
@@ -11,16 +12,16 @@
     <table class="table table-striped">
         <thead class="border-bottom border-black">
         <tr>
-            <th>País</th>
+            <th>@Localizer["Country"]</th>
         </tr>
         </thead>
         <tbody>
-        @foreach (var country in Countries)
+        @foreach (var country in Countries!)
         {
             <tr>
                 <td>@country.Name</td>
-                <td><a class="btn btn-warning btn-sm">Editar</a></td>
-                <td><button class="btn btn-danger btn-sm">Borrar</button></td>
+                <td><a class="btn btn-warning btn-sm">@Localizer["Edit"]</a></td>
+                <td><button class="btn btn-danger btn-sm">@Localizer["Delete"]</button></td>
             </tr>
         }
         </tbody>
