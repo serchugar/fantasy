@@ -2,13 +2,12 @@
 
 <h3>Países</h3>
 
-@if (Countries is null)
-{
-    
-    <p>Cargando...</p>
-}
-else
-{
+<div class="mb-3">
+    <a class="btn btn-primary" href="/countries/create">Nuevo País</a>
+</div>
+
+<GenericList MyList="Countries">
+    <Body>
     <table class="table table-striped">
         <thead class="border-bottom border-black">
         <tr>
@@ -26,4 +25,5 @@ else
         }
         </tbody>
     </table>
-}
+    </Body>
+</GenericList>

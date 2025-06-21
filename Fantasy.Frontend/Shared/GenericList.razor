@@ -1,0 +1,30 @@
+@typeparam T
+
+@if (MyList is null)
+{
+    @if (Loading is null)
+    {
+        <div class="d-flex justify-content-center">
+            <p>Cargando...</p>
+        </div>
+    }
+    else
+    {
+        @Loading
+    }
+}
+else if (!MyList.Any())
+{
+    @if (NoRecords is null)
+    {
+        <p>No hay registros para mostrar</p>
+    }
+    else
+    {
+        @NoRecords
+    }
+}
+else
+{
+    @Body
+}
