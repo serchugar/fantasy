@@ -3,10 +3,10 @@ using Serchugar.Base.Shared;
 
 namespace Fantasy.Shared.Entities.Country;
 
-public class CountryDTO : IPrimarykey
+public class CountryDTO : IPrimaryKey
 {
     public int Id { get; set; }
-    object IPrimarykey.Id => Id;
+    object IPrimaryKey.Id => Id;
 
     [Required, MaxLength(64)]
     public string Name { get; set; } = null!;

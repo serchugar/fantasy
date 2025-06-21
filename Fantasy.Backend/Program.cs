@@ -11,6 +11,7 @@ if (builder.Environment.IsDevelopment()) builder.Configuration.AddUserSecrets<Pr
 builder.Services.Configure<ServiceConfig>(builder.Configuration.GetSection(nameof(ServiceConfig)));
 builder.Services.AddDependencyInjection();
 builder.Services.AddDbContextPool<AppDbContext>(opts => opts.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddCorsConfig();
 builder.Services.AddControllers();
 if (builder.Environment.IsDevelopment()) builder.Services.AddSwaggerConfig();
 
@@ -23,6 +24,7 @@ if (app.Environment.IsDevelopment()) app.UseSwaggerConfig();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseCustomExceptionHandler();
+app.UseCorsConfig();
 
 #endregion
 

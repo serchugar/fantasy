@@ -7,12 +7,12 @@ namespace Fantasy.Shared.Entities.Country;
 
 [Table("countries", Schema = "fantasy")]
 [Index(nameof(Name), IsUnique = true)]
-public class CountryModel : IPrimarykey
+public class CountryModel : IPrimaryKey
 {
     
     [Column("id"), Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
-    object IPrimarykey.Id => Id;
+    object IPrimaryKey.Id => Id;
 
     [Column("name"), Required, MaxLength(64)]
     public string Name { get; set; } = null!;
