@@ -93,4 +93,7 @@
     <data name="RecordCreatedOk" xml:space="preserve">
         <value>Record created successfully</value>
     </data>
+    <data name="Ok" xml:space="preserve">
+        <value>Ok</value>
+    </data>
 </root>

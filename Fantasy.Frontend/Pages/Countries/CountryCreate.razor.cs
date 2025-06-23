@@ -19,7 +19,7 @@ public partial class CountryCreate(CountriesRepository repo)
         var responseHttp = await repo.CreateAsync(_country);
         if (responseHttp.Code.IsError())
         {
-            await SweetAlertService.FireAsync(Localizer["Error"], responseHttp.ErrorMessage);
+            await SweetAlertService.FireAsync(Localizer["Error"], responseHttp.ErrorMessage, SweetAlertIcon.Error);
             return;
         }
 
@@ -30,6 +30,7 @@ public partial class CountryCreate(CountriesRepository repo)
             Toast = true,
             Position = SweetAlertPosition.BottomEnd,
             ShowConfirmButton = true,
+            ConfirmButtonText = Localizer["Ok"],
             Timer = 3000
         });
         await toast.FireAsync(icon: SweetAlertIcon.Success, message:Localizer["RecordCreatedOk"]);

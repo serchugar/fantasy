@@ -1,0 +1,14 @@
+@inherits ComponentBaseWithLocalizer
+
+@page "/countries/edit/{Id:int}"
+
+<h3>@Localizer["Edit"] @Localizer["Country"]</h3>
+
+@if (_country is null)
+{
+    <Loading/>
+}
+else
+{
+    <CountryForm @ref="countryForm" Country="_country" OnValidSubmit="EditAsync" ReturnAction="Return"/>
+}
