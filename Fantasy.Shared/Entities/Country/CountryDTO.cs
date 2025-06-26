@@ -1,12 +1,13 @@
 using System.ComponentModel.DataAnnotations;
-using Serchugar.Base.Shared;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fantasy.Shared.Entities.Country;
 
-public class CountryDTO : IPrimaryKey
+[NotMapped]
+public class CountryDTO
 {
+    [Key]
     public int Id { get; set; }
-    object IPrimaryKey.Id => Id;
 
     [Required, MaxLength(64)]
     public string Name { get; set; } = null!;
