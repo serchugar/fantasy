@@ -96,4 +96,13 @@
     <data name="Ok" xml:space="preserve">
         <value>Ok</value>
     </data>
+    <data name="http404" xml:space="preserve">
+        <value>Record not found.</value>
+    </data>
+    <data name="http409_del" xml:space="preserve">
+        <value>Cannot be deleted because it has related records.</value>
+    </data>
+    <data name="http409_create" xml:space="preserve">
+        <value>The record you are trying to create already exists.</value>
+    </data>
 </root>

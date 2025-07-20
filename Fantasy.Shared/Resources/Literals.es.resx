@@ -96,4 +96,13 @@
     <data name="Ok" xml:space="preserve">
         <value>Ok</value>
     </data>
+    <data name="http404" xml:space="preserve">
+        <value>Registro no encontrado</value>
+    </data>
+    <data name="http409_del" xml:space="preserve">
+        <value>No se puede borrar porque tiene registros relacionados.</value>
+    </data>
+    <data name="http409_create" xml:space="preserve">
+        <value>Ya existe el registro que estás intentando crear.</value>
+    </data>
 </root>

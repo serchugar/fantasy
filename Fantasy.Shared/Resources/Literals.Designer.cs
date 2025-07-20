@@ -168,6 +168,33 @@ namespace Fantasy.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Record not found..
+        /// </summary>
+        public static string http404 {
+            get {
+                return ResourceManager.GetString("http404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The record you are trying to create already exists..
+        /// </summary>
+        public static string http409_create {
+            get {
+                return ResourceManager.GetString("http409_create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot be deleted because it has related records..
+        /// </summary>
+        public static string http409_del {
+            get {
+                return ResourceManager.GetString("http409_del", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string Image {
