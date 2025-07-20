@@ -12,7 +12,7 @@ public class CountriesController(CountriesRepository repo) : BaseController
     public async Task<ActionResult<IEnumerable<CountryDTO>>> GetAllAsync() =>
         SetResponse(await repo.GetAllAsync());
     
-    [HttpGet("{id:int}", Name = RouteNames.GetById)]
+    [HttpGet("{id:int}")]
     public async Task<ActionResult<CountryDTO>> GetByIdAsync(int id) =>
         SetResponse(await repo.GetByIdAsync(id));
     

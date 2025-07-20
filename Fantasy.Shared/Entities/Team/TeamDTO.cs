@@ -10,4 +10,5 @@ public class TeamDTO
     public int Id { get; set; }
     public string Name { get; set; }
     public string? Image { get; set; }
+    public int CountryId { get; set; }
 }
