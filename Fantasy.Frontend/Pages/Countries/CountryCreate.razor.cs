@@ -19,7 +19,7 @@ public partial class CountryCreate(CountriesRepository repo)
         var responseHttp = await repo.CreateAsync(_country);
         if (responseHttp.Code.IsError())
         {
-            await SweetAlertService.FireAsync(Localizer["Error"], responseHttp.ErrorMessage, SweetAlertIcon.Error);
+            await SweetAlertService.FireAsync(Localizer["Error"], Localizer[$"{responseHttp.ErrorMessage}"], SweetAlertIcon.Error);
             return;
         }
 

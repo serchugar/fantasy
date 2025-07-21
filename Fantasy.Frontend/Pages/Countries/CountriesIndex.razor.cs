@@ -37,7 +37,7 @@ public partial class CountriesIndex(CountriesRepository repo)
         
         else if (responseHttp.Code.IsError())
         {
-            await SweetAlertService.FireAsync(Localizer["Error"], responseHttp.ErrorMessage, SweetAlertIcon.Error);
+            await SweetAlertService.FireAsync(Localizer["Error"], Localizer[$"{responseHttp.ErrorMessage}"], SweetAlertIcon.Error);
             return;
         }
 

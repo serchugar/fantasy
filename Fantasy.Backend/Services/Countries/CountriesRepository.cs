@@ -35,7 +35,18 @@ public class CountriesRepository(AppDbContext context, string singular = "Countr
         
         return (await base.UpdateAsync(updatedCountry)).Map();
     }
-    
-    public async Task<Response<CountryDTO>> DeleteAsync(int id) => 
-        (await base.DeleteAsync(id)).Map();
+
+    public async Task<Response<CountryDTO>> DeleteAsync(int id)
+    {
+        var response = await base.GetByIdAsync(id);
+        if (response.Code.IsError()) return response.MapErrorResponse<CountryDTO>();
+        
+        // This is done because DeleteBehavior is set to Restricted. If set to Cascade, call base.DeleteAsync() directly
+        // If this is omitted and DeleteBehavior is Restricted, the error message will be in the backend language,
+        // so localization will not be possible, as it will return ResponseCodes Error
+        if (response.Data!.TeamCount > 0)
+            return Response<CountryDTO>.FromError(ResponseCodes.Conflict, "Cannot delete because it has related 'Teams' data");
+        
+        return (await base.DeleteAsync(id)).Map();
+    }
 }
