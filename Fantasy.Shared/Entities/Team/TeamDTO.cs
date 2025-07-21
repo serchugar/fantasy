@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Fantasy.Shared.Resources;
 
 namespace Fantasy.Shared.Entities.Team;
 
@@ -9,7 +10,9 @@ public class TeamDTO
     [Key]
     public int Id { get; set; }
     
-    [Required, MaxLength(64)]
+    [Display(Name = "Team", ResourceType = typeof(Literals))]
+    [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
+    [MaxLength(64, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
     public string Name { get; set; } = null!;
     
     public string? Image { get; set; }
