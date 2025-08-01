@@ -28,6 +28,13 @@ app.UseAuthorization();
 app.UseCustomExceptionHandler();
 app.UseCorsConfig();
 
+// Warmup EF so the real first query(the slow one) happens under the hood
+using(var scope = app.Services.CreateScope())
+{
+    AppDbContext context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await context.Countries.AnyAsync();
+}
+
 #endregion
 
 app.DiscoverControllerRoutes();
