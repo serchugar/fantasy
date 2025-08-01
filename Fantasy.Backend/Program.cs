@@ -12,7 +12,9 @@ if (builder.Environment.IsDevelopment()) builder.Configuration.AddUserSecrets<Pr
 
 builder.Services.Configure<ServiceConfig>(builder.Configuration.GetSection(nameof(ServiceConfig)));
 builder.Services.AddDependencyInjection();
-builder.Services.AddDbContextPool<AppDbContext>(opts => opts.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContextPool<AppDbContext>(opts => opts.UseNpgsql(
+    builder.Configuration.GetConnectionString("DefaultConnection"),
+    o => o.MigrationsHistoryTable("__EFMigrationHistory", "fantasy")));
 builder.Services.AddCorsConfig();
 builder.Services.AddControllers();
 if (builder.Environment.IsDevelopment()) builder.Services.AddSwaggerConfig();
@@ -22,6 +24,7 @@ if (builder.Environment.IsDevelopment()) builder.Services.AddSwaggerConfig();
 WebApplication app = builder.Build();
 #region Middlewares
 
+await app.UseDbSeederAsync();
 if (app.Environment.IsDevelopment()) app.UseSwaggerConfig();
 app.UseHttpsRedirection();
 app.UseAuthorization();
