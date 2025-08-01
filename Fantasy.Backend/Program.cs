@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Fantasy.Backend.Middleware;
 using Fantasy.Backend.Configuration.AppSettings;
 using Fantasy.Backend.Configuration;
@@ -16,7 +17,8 @@ builder.Services.AddDbContextPool<AppDbContext>(opts => opts.UseNpgsql(
     builder.Configuration.GetConnectionString("DefaultConnection"),
     o => o.MigrationsHistoryTable("__EFMigrationHistory", "fantasy")));
 builder.Services.AddCorsConfig();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(opts => opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 if (builder.Environment.IsDevelopment()) builder.Services.AddSwaggerConfig();
 
 #endregion
