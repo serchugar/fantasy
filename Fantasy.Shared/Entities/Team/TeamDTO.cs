@@ -15,8 +15,10 @@ public class TeamDTO
     [MaxLength(64, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
     public string Name { get; set; } = null!;
     
+    [Display(Name = "Image", ResourceType = typeof(Literals))]
     public string? Image { get; set; }
     
+    [Display(Name = "Country", ResourceType = typeof(Literals))]
     [Required, Range(1, int.MaxValue)]
     public int CountryId { get; set; }
 }
