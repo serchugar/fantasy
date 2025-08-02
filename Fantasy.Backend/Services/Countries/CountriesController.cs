@@ -10,7 +10,7 @@ public class CountriesController(CountriesRepository repo) : BaseController
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<CountryDTO>>> GetAllAsync() =>
-        SetResponse((await repo.GetAllAsync()).Map());
+        SetResponse(await repo.GetAllDTOsAsync());
     
     [HttpGet("{id:int}")]
     public async Task<ActionResult<CountryDTO>> GetByIdAsync(int id) =>

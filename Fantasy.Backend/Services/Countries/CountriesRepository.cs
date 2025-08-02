@@ -12,6 +12,31 @@ public class CountriesRepository(AppDbContext context, string singular = "Countr
     public async Task<Response<IEnumerable<CountryModel>>> GetAllAsync() =>
         await base.GetAllAsync();
     
+    public async Task<Response<IEnumerable<CountryDTO>>> GetAllDTOsAsync()
+    {
+        try
+        {
+            IEnumerable<CountryDTO> result = await context.Set<CountryModel>()
+                .Select(c => new CountryDTO
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    TeamCount = c.Teams.Count
+                })
+                .ToListAsync();
+            
+            if (!result.Any()) return Response<IEnumerable<CountryDTO>>.FromSuccess(ResponseCodes.Empty, []);
+            
+            return Response<IEnumerable<CountryDTO>>.FromSuccess(ResponseCodes.Success, result);
+        }
+        catch (Exception ex)
+        {
+            return Response<IEnumerable<CountryDTO>>.FromError(
+                ResponseCodes.Error,
+                ex.InnerException?.Data["MessageText"]?.ToString() ?? ex.Message);
+        }
+    }
+    
     public async Task<Response<CountryModel>> GetByIdAsync(int id) =>
         await base.GetByIdAsync(id);
 

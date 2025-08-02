@@ -14,4 +14,6 @@ public class CountryDTO
     [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Literals))]
     [MaxLength(64, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(Literals))]
     public string Name { get; set; } = null!;
+    
+    public int TeamCount { get; set; }
 }
