@@ -3,7 +3,6 @@ using Fantasy.Backend.Middleware;
 using Fantasy.Backend.Configuration.AppSettings;
 using Fantasy.Backend.Configuration;
 using Fantasy.Backend.Data;
-using Fantasy.Shared.Entities.Country;
 using Microsoft.EntityFrameworkCore;
 using Serchugar.Base.Backend;
 
@@ -43,7 +42,7 @@ using(var scope = app.Services.CreateScope())
 #endregion
 
 app.DiscoverControllerRoutes();
-app.DiscoverKeyedEntities(typeof(CountryModel).Assembly);
+app.DiscoverKeyedEntities();
 
 app.MapControllers();
 app.Run();

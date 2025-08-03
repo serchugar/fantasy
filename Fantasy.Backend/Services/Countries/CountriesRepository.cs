@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Fantasy.Backend.Data;
 using Fantasy.Shared.Entities.Country;
 using Microsoft.EntityFrameworkCore;
@@ -9,30 +10,11 @@ namespace Fantasy.Backend.Services.Countries;
 public class CountriesRepository(AppDbContext context, string singular = "Country", string plural = "Countries") 
     : BaseRepository<CountryModel>(context, singular, plural) // Class from my package!! :D
 {
-    public async Task<Response<IEnumerable<CountryDTO>>> GetAllAsync()
-    {
-        try
-        {
-            IEnumerable<CountryDTO> result = await context.Set<CountryModel>()
-                .Select(c => new CountryDTO
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    TeamCount = c.Teams.Count
-                })
-                .ToListAsync();
-            
-            if (!result.Any()) return Response<IEnumerable<CountryDTO>>.FromSuccess(ResponseCodes.Empty, []);
-            
-            return Response<IEnumerable<CountryDTO>>.FromSuccess(ResponseCodes.Success, result);
-        }
-        catch (Exception ex)
-        {
-            return Response<IEnumerable<CountryDTO>>.FromError(
-                ResponseCodes.Error,
-                ex.InnerException?.Data["MessageText"]?.ToString() ?? ex.Message);
-        }
-    }
+    public string Singular => singular;
+    public string Plural => plural;
+    
+    public async Task<Response<IEnumerable<CountryDTO>>> GetAllAsync() =>
+        (await base.GetAllAsync(withAutoIncludes: true)).Map();
     
     public async Task<Response<CountryDTO>> GetByIdAsync(int id) =>
         (await base.GetByIdAsync(id)).Map();
@@ -71,4 +53,7 @@ public class CountriesRepository(AppDbContext context, string singular = "Countr
         
         return (await base.DeleteAsync(id)).Map();
     }
+    
+    public async Task<Response<bool>> CheckIfEntityExistsAsync(Expression<Func<CountryModel, bool>> expression) =>
+        await base.CheckIfEntityExistsAsync(expression);
 }
