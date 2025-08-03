@@ -21,6 +21,6 @@ public class TeamModel
     
     
     // Nav props
-    public virtual CountryModel Country { get; set; } = null!;
+    public virtual CountryModel? Country { get; set; }
     
 }

@@ -20,10 +20,10 @@ public class TeamDTO
     public string? Image { get; set; }
 
     [Display(Name = "Country", ResourceType = typeof(Literals))]
-    [Required, Range(1, int.MaxValue)]
+    [Range(1, int.MaxValue)]
     public int CountryId { get; set; }
     
     
     // Nav props
-    public CountryDTO Country { get; set; } = null!;
+    public CountryDTO? Country { get; set; }
 }

@@ -30,7 +30,7 @@ public class TeamsRepository(AppDbContext context, CountriesRepository countries
     // TODO: Ensure the country exists before creating a team in the frontend form. With a dropdown for countries.
     public async Task<Response<TeamDTO>> CreateAsync(TeamDTO team)
     {
-        Response<bool> result = await base.CheckIfEntityExistsAsync(t => EF.Functions.ILike(t.Name, team.Name) && t.CountryId == team.Country.Id);
+        Response<bool> result = await base.CheckIfEntityExistsAsync(t => EF.Functions.ILike(t.Name, team.Name) && t.CountryId == team.CountryId);
         if (result.Code.IsError()) return result.MapErrorResponse<TeamDTO>();
         
         if (result.Data) return Response<TeamDTO>.FromError(ResponseCodes.Conflict, $"{singular} already exists");
