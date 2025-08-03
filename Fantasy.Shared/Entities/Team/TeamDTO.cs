@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Fantasy.Shared.Entities.Country;
 using Fantasy.Shared.Resources;
 
 namespace Fantasy.Shared.Entities.Team;
@@ -17,8 +18,12 @@ public class TeamDTO
     
     [Display(Name = "Image", ResourceType = typeof(Literals))]
     public string? Image { get; set; }
-    
+
     [Display(Name = "Country", ResourceType = typeof(Literals))]
     [Required, Range(1, int.MaxValue)]
     public int CountryId { get; set; }
+    
+    
+    // Nav props
+    public CountryDTO Country { get; set; } = null!;
 }

@@ -114,4 +114,7 @@
     <data name="Team" xml:space="preserve">
         <value>Equipo</value>
     </data>
+    <data name="Teams" xml:space="preserve">
+        <value>Equipos</value>
+    </data>
 </root>

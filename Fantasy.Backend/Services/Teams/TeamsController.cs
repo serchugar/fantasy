@@ -16,6 +16,10 @@ public class TeamsController(TeamsRepository repo) : BaseController
     public async Task<ActionResult<TeamDTO>> GetByIdAsync(int id) =>
         SetResponse(await repo.GetByIdAsync(id));
     
+    [HttpGet("country/{countryId:int}")]
+    public async Task<ActionResult<IEnumerable<TeamDTO>>> GetByCountryIdAsync(int countryId) =>
+        SetResponse(await repo.GetByCountryIdAsync(countryId));
+    
     [HttpPost]
     public async Task<ActionResult<TeamDTO>> CreateAsync(TeamDTO country) => 
         SetResponse(await repo.CreateAsync(country));
