@@ -40,6 +40,7 @@ public partial class TeamForm(CountriesRepository countriesRepo)
     
     private async Task LoadCountries()
     {
+        // TODO: Use withAutoIncludes=false in this case because we only want the names
         var result = await countriesRepo.GetAllAsync();
         if (result.Code.IsError()) 
         {
