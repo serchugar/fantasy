@@ -33,7 +33,7 @@ public partial class TeamCreate(TeamsRepository repo)
             ConfirmButtonText = Localizer["Ok"],
             Timer = 3000
         });
-        await toast.FireAsync(icon: SweetAlertIcon.Success, message: Localizer["RecordCreatedOk"]);
+        toast.FireAsync(icon: SweetAlertIcon.Success, message: Localizer["RecordCreatedOk"]);
     }
 
     private void Return()
