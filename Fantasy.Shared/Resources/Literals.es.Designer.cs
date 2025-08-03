@@ -312,6 +312,15 @@ namespace Fantasy.Shared.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -- Selecciona un País --.
+        /// </summary>
+        internal static string SelectACountry {
+            get {
+                return ResourceManager.GetString("SelectACountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aplicación de predicciones futboleras.
         /// </summary>
         internal static string Subtitle {
