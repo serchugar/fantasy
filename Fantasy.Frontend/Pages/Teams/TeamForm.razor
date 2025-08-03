@@ -1,0 +1,25 @@
+@inherits ComponentBaseWithLocalizer
+
+<NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"/>
+
+<EditForm EditContext="_editContext" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <div class="mb-3">
+        <label>@Localizer["Team"]:</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@Team.Name"/>
+            <ValidationMessage For="@(() => Team.Name)"/>
+        </div>
+        <label>@Localizer["Country"]:</label>
+        <InputSelect class="form-select" @bind-Value="@Team.CountryId">
+            @if (_countries is null) return;
+            @foreach(var country in _countries)
+            {
+                <option value="@country.Id">@country.Name</option>
+            }
+        </InputSelect>
+    </div>
+    
+    <button class="btn btn-primary" type="submit">@Localizer["SaveChanges"]</button>
+    <button class="btn btn-success" @onclick="ReturnAction">@Localizer["Return"]</button>
+</EditForm>

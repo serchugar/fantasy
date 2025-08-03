@@ -1,0 +1,7 @@
+@inherits ComponentBaseWithLocalizer
+
+@page "/teams/create"
+
+<h3>@Localizer["Create"] @Localizer["Team"]</h3>
+
+<TeamForm @ref="_teamForm" Team="_team" OnValidSubmit="CreateAsync" ReturnAction="Return"></TeamForm>
