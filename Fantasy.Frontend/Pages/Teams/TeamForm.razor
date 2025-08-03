@@ -5,19 +5,28 @@
 <EditForm EditContext="_editContext" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <div class="mb-3">
+        
         <label>@Localizer["Team"]:</label>
         <div>
             <InputText class="form-control" @bind-Value="@Team.Name"/>
             <ValidationMessage For="@(() => Team.Name)"/>
         </div>
+
         <label>@Localizer["Country"]:</label>
-        <InputSelect class="form-select" @bind-Value="@Team.CountryId">
-            @if (_countries is null) return;
-            @foreach(var country in _countries)
-            {
-                <option value="@country.Id">@country.Name</option>
-            }
-        </InputSelect>
+        <div>
+            <InputSelect class="form-select" @bind-Value="@Team.CountryId">
+                <!-- TODO: Make value 0 disappear from options once country selected -->
+                <!-- Right now it produces a bug if the value 0 is selected again -->
+                <option value="0">@Localizer["SelectACountry"]</option>
+                @if (_countries is null) return;
+                @foreach (var country in _countries)
+                {
+                    <option value="@country.Id">@country.Name</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => Team.CountryId)"/>
+        </div>
+        
     </div>
     
     <button class="btn btn-primary" type="submit">@Localizer["SaveChanges"]</button>
